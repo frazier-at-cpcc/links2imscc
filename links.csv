@@ -1,49 +1,56 @@
-DSL resource,http://www.dslreports.com/
-The best satellite internet providers of 2024,https://www.satelliteinternet.com/
-Layer 3 Switch vs Router – Know the difference,https://ipwithease.com/difference-between-router-and-layer-3-switch/
-Types of Routing Protocols – The Ultimate Guide,https://www.comparitech.com/net-admin/routing-protocol-types-guide/
-Starlink explained,https://www.cnet.com/home/internet/starlink-satellite-internet-explained/
-Internet Protocol Version 6 (IPv6) Specification,https://datatracker.ietf.org/doc/html/rfc2460
-Domain Name System (DNS) Parameters,https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml
-IPv4 Private Address Space and Filtering,https://www.arin.net/reference/research/statistics/address_filters/
-IPv6 Security Myth #3 – No IPv6 NAT Means Less Security,https://www.internetsociety.org/blog/2015/01/ipv6-security-myth-3-no-ipv6-nat-means-less-security/
-NTP: The Network Time Protocol,http://www.ntp.org/
-PTP: Precision Time Protocol,https://datatracker.ietf.org/doc/rfc8173/
-Audit Certification,http://www.isaca.org/
-Stop Ransomware,https://www.cisa.gov/stopransomware
-Five Things To Know About DHCP Snooping,https://packetpushers.net/five-things-to-know-about-dhcp-snooping/
-Understanding and Configuring Dynamic ARP Inspection,https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/dynarp.html
-TCP/IP Fundamentals for Microsoft Windows: Overview,http://technet.microsoft.com/en-us/library/bb726983.aspx
-8 Common Network Utilities Explained,https://www.howtogeek.com/190148/8-common-network-utilities-explained/
-List of Linux networking tools,https://gist.github.com/miglen/70765e663c48ae0544da08c07006791f
-VPN protocols and which is the best to use,https://www.techradar.com/vpn/vpn-protocols-and-which-is-the-best-to-use
-Computer Network Topologies,https://www.tutorialspoint.com/data_communication_computer_network/computer_network_topologies.htm
-Understanding Client-Server Applications,https://www.experts-exchange.com/articles/11271/Understanding-Client-Server-Protocols-and-Web-Applications.html
-Troubleshooting Overview,https://www.cisco.com/en/US/docs/internetworking/troubleshooting/guide/tr1901.html
-Client-Server vs. Peer Networks,http://www.tomshardware.com/reviews/local-area-network-wi-fi-wireless3020-2.html
-The Seven Layers of the OSI Model,http://www.webopedia.com/quick_ref/OSI_Layers.asp
-How Stuff Works – Networking Library,http://computer.howstuffworks.com/computer-networking-channel.htm
-Understanding IP Addresses Subnets and CIDR Notation for Networking,https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking
-Segmenting a Network Using VLANs,https://support.industry.siemens.com/cs/document/109749844/segmenting-a-network-using-vlans?dti=0&lc=en-DE
-Understanding VLAN Trunk Protocol,https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html
-IPv6 Subnetting,https://docs.netgate.com/pfsense/en/latest/network/ipv6/subnets.html
-Wi-Fi 7: What is it and what to expect,https://www.rcrwireless.com/20240108/network-infrastructure/wi-fi/wi-fi-7-certification-is-here
-EIA/TIA site,http://www.tiaonline.org
-What is 100 Gigabit Ethernet Technology: How does it affect your business?,https://www.lanner-america.com/blog/100-gigabit-ethernet-technology-affect-business/
-What is a Cat8 Ethernet Cable and How is it Different?,https://www.cablesandkits.com/learning-center/what-are-cat8-ethernet-cables
-State of the Ethernet 2020 | A Story of More Data,https://www.versatek.com/state-of-the-ethernet-2020-a-story-of-more-data/
-Structured Cabling Standards Explained,https://www.telco-data.com/structured-cabling-standards/
-Network Documentation Best Practices,https://www.auvik.com/franklyit/blog/network-documentation-best-practices/
-Who Needs Network Documentation? Benefits and Best Practices,https://www.lucidchart.com/blog/importance-of-network-documentation
-Network documentation checklist,https://searchitchannel.techtarget.com/feature/Channel-Checklist-10-steps-for-network-documentation
-Software-Defined Networking (SDN) Definition,https://opennetworking.org/sdn-definition/
-Software-Defined Networking,https://www.cisco.com/c/en/us/solutions/software-defined-networking/overview.html
-Security Policy Templates,https://www.sans.org/information-security-policy/
-Best biometric locks,https://www.pocket-lint.com/smart-home/buyers-guides/154026-best-biometric-locks
-What is Hashing?,https://www.techopedia.com/definition/14316/hashing-cybersecurity
-Defense in Depth Podcast: Secure Access,https://cisoseries.com/defense-in-depth-secure-access/
-Network Monitoring: Protocols Best Practices and Tools,https://www.tek-tools.com/network/network-monitoring-guide-and-tools
-Top SNMP Alternatives because SNMP is dying,https://bestmonitoringtools.com/top-snmp-alternatives-because-snmp-is-dying/
-What is cloud disaster recovery and how does it work?,https://www.rackwareinc.com/cloud-disaster-recovery
-IT Disaster Recovery,https://cloudian.com/guides/disaster-recovery/it-disaster-recovery/
-IT Disaster Recovery Plan,https://www.ready.gov/it-disaster-recovery-plan
+Title,URL,Chapter
+Computer Network Topologies,https://www.tutorialspoint.com/data_communication_computer_network/computer_network_topologies.htm,1
+Understanding Client-Server Applications,https://www.experts-exchange.com/articles/11271/Understanding-Client-Server-Protocols-and-Web-Applications.html,1
+Troubleshooting Overview,https://www.cisco.com/en/US/docs/internetworking/troubleshooting/guide/tr1901.html,1
+Client-Server vs. Peer Networks,http://www.tomshardware.com/reviews/local-area-network-wi-fi-wireless3020-2.html,1
+The Seven Layers of the OSI Model,http://www.webopedia.com/quick_ref/OSI_Layers.asp,1
+How Stuff Works – Networking Library,http://computer.howstuffworks.com/computer-networking-channel.htm,1
+Structured Cabling Standards Explained,https://www.telco-data.com/structured-cabling-standards/,2
+Network Documentation Best Practices,https://www.auvik.com/franklyit/blog/network-documentation-best-practices/,2
+Who Needs Network Documentation?,https://www.lucidchart.com/blog/importance-of-network-documentation,2
+Network documentation checklist,https://searchitchannel.techtarget.com/feature/Channel-Checklist-10-steps-for-network-documentation,2
+Internet Protocol Version 6 (IPv6) Specification,https://datatracker.ietf.org/doc/html/rfc2460,3
+Domain Name System (DNS) Parameters,https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml,3
+IPv4 Private Address Space and Filtering,https://www.arin.net/reference/research/statistics/address_filters/,3
+IPv6 Security Myth #3 – No IPv6 NAT Means Less Security,https://www.internetsociety.org/blog/2015/01/ipv6-security-myth-3-no-ipv6-nat-means-less-security/,3
+NTP: The Network Time Protocol,http://www.ntp.org/,3
+PTP: Precision Time Protocol,https://datatracker.ietf.org/doc/rfc8173/,3
+TCP/IP Fundamentals for Microsoft Windows: Overview,http://technet.microsoft.com/en-us/library/bb726983.aspx,4
+8 Common Network Utilities Explained,https://www.howtogeek.com/190148/8-common-network-utilities-explained/,4
+List of Linux networking tools,https://gist.github.com/miglen/70765e663c48ae0544da08c07006791f,4
+VPN protocols and which is the best to use,https://www.techradar.com/vpn/vpn-protocols-and-which-is-the-best-to-use,4
+EIA/TIA site,http://www.tiaonline.org,5
+What is 100 Gigabit Ethernet Technology: How does it affect your business?,https://www.lanner-america.com/blog/100-gigabit-ethernet-technology-affect-business/,5
+What is a Cat8 Ethernet Cable and How is it Different?,https://www.cablesandkits.com/learning-center/what-are-cat8-ethernet-cables,5
+State of the Ethernet 2020 | A Story of More Data,https://www.versatek.com/state-of-the-ethernet-2020-a-story-of-more-data/,5
+What is WPA3?,https://www.networkworld.com/article/3316567/what-is-wpa3-wi-fi-security-protocol-strengthens-connections.html,6
+IoT Security Foundation,https://www.iotsecurityfoundation.org/,6
+Wi-Fi 7: What is it and what to expect,https://www.rcrwireless.com/20240108/network-infrastructure/wi-fi/wi-fi-7-certification-is-here,6
+6 Leading Types of IoT Wireless Tech and Their Best Use Cases,https://behrtech.com/blog/6-leading-types-of-iot-wireless-tech-and-their-best-use-cases/,6
+802.11ad,https://www.qualcomm.com/products/features/80211ad,6
+Cloud Computing Tutorial,http://www.tutorialspoint.com/cloud_computing/index.htm,7
+Software-Defined Networking (SDN) Definition,https://opennetworking.org/sdn-definition/,7
+Software-Defined Networking,https://www.cisco.com/c/en/us/solutions/software-defined-networking/overview.html,7
+Understanding Rapid Spanning Tree Protocol,https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html,7
+IP Subnet Calculator,http://www.subnet-calculator.com/,8
+Understanding IP Addresses Subnets and CIDR Notation for Networking,https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking,8
+Segmenting a Network Using VLANs,https://support.industry.siemens.com/cs/document/109749844/segmenting-a-network-using-vlans?dti=0&lc=en-DE,8
+Understanding VLAN Trunk Protocol,https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html,8
+IPv6 Subnetting,https://docs.netgate.com/pfsense/en/latest/network/ipv6/subnets.html,8
+DSL resource,http://www.dslreports.com/,9
+The best satellite internet providers of 2024,https://www.satelliteinternet.com/,9
+Layer 3 Switch vs Router – Know the difference,https://ipwithease.com/difference-between-router-and-layer-3-switch/,9
+Types of Routing Protocols – The Ultimate Guide,https://www.comparitech.com/net-admin/routing-protocol-types-guide/,9
+Starlink explained,https://www.cnet.com/home/internet/starlink-satellite-internet-explained/,9
+Audit Certification,http://www.isaca.org/,10
+Stop Ransomware,https://www.cisa.gov/stopransomware,10
+Five Things To Know About DHCP Snooping,https://packetpushers.net/five-things-to-know-about-dhcp-snooping/,10
+Understanding and Configuring Dynamic ARP Inspection,https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/dynarp.html,10
+Security Policy Templates,https://www.sans.org/information-security-policy/,11
+Best biometric locks,https://www.pocket-lint.com/smart-home/buyers-guides/154026-best-biometric-locks,11
+What is Hashing?,https://www.techopedia.com/definition/14316/hashing-cybersecurity,11
+Network Monitoring: Protocols Best Practices and Tools,https://www.tek-tools.com/network/network-monitoring-guide-and-tools,12
+Top SNMP Alternatives because SNMP is dying (updated 2023),https://bestmonitoringtools.com/top-snmp-alternatives-because-snmp-is-dying/,12
+What is cloud disaster recovery and how does it work?,https://www.rackwareinc.com/cloud-disaster-recovery,12
+IT Disaster Recovery,https://cloudian.com/guides/disaster-recovery/it-disaster-recovery/,12
+IT Disaster Recovery Plan,https://www.ready.gov/it-disaster-recovery-plan,12
