@@ -7,7 +7,6 @@ import re
 import uuid
 
 def sanitize_filename(filename):
-    # Remove or replace any characters that are not allowed in filenames
     return re.sub(r'[\\/*?:"<>|]', "_", filename)
 
 def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
@@ -15,29 +14,45 @@ def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
     temp_dir = "temp_imscc"
     os.makedirs(temp_dir, exist_ok=True)
 
-    # Define manifest XML structure according to Common Cartridge v1.3 specification
+    # Define manifest XML structure with specified namespaces and schema locations
     manifest = ET.Element("manifest", {
-        "identifier": "com.example.manifest",
-        "xmlns": "http://www.imsglobal.org/xsd/imscp_v1p1",
-        "xmlns:imsmd": "http://www.imsglobal.org/xsd/imsmd_v1p2",
-        "xmlns:imscc": "http://www.imsglobal.org/xsd/imsccv1p3",
+        "identifier": str(uuid.uuid4()),
+        "xmlns": "http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1",
+        "xmlns:lomr": "http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource",
+        "xmlns:lomm": "http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation": "http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource "
+                              "http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lomresource_v1p0.xsd "
+                              "http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1 "
+                              "http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd "
+                              "http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest "
+                              "http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lommanifest_v1p0.xsd"
     })
-    
+
+    # Metadata section
     metadata = ET.SubElement(manifest, "metadata")
     schema = ET.SubElement(metadata, "schema")
-    schema.text = "IMS Common Cartridge"
+    schema.text = "IMS Thin Common Cartridge"
     schemaversion = ET.SubElement(metadata, "schemaversion")
-    schemaversion.text = "1.3"
+    schemaversion.text = "1.3.0"
     
+    lom_metadata = ET.SubElement(metadata, "lomm:lom")
+    lom_general = ET.SubElement(lom_metadata, "lomm:general")
+    lom_title = ET.SubElement(lom_general, "lomm:title")
+    lom_string = ET.SubElement(lom_title, "lomm:string", {"language": "en-US"})
+    lom_string.text = "Frazier Smith Sandbox"
+
+    # Organizations structure
     organizations = ET.SubElement(manifest, "organizations")
     organization = ET.SubElement(organizations, "organization", {
-        "identifier": "org_additional_resources",
+        "identifier": str(uuid.uuid4()),
         "structure": "rooted-hierarchy"
     })
     
-    item_module = ET.SubElement(organization, "item", {"identifier": "item_additional_resources_module"})
-    title_module = ET.SubElement(item_module, "title")
-    title_module.text = "Additional Resources"
+    main_item = ET.SubElement(organization, "item", {"identifier": str(uuid.uuid4())})
+    nested_item = ET.SubElement(main_item, "item", {"identifier": str(uuid.uuid4())})
+    title_item = ET.SubElement(nested_item, "title")
+    title_item.text = "TurnItIn"
 
     # Define the resources element globally
     resources = ET.SubElement(manifest, 'resources')
@@ -66,7 +81,8 @@ def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
                 weblink_xml = ET.Element("webLink", {
                     "xmlns": "http://www.imsglobal.org/xsd/imsccv1p3/imswl_v1p3",
                     "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-                    "xsi:schemaLocation": "http://www.imsglobal.org/xsd/imsccv1p3/imswl_v1p3 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imswl_v1p3.xsd"
+                    "xsi:schemaLocation": "http://www.imsglobal.org/xsd/imsccv1p3/imswl_v1p3 "
+                                           "http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imswl_v1p3.xsd"
                 })
                 title = ET.SubElement(weblink_xml, "title")
                 title.text = link_title
@@ -82,7 +98,7 @@ def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
                 })
                 
                 # Define the item for the link in the organization structure
-                link_item = ET.SubElement(item_module, 'item', {
+                link_item = ET.SubElement(nested_item, 'item', {
                     'identifier': f'item_{link_resource_id}',
                     'identifierref': link_resource_id
                 })
@@ -92,21 +108,19 @@ def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
                 print("CSV format error: 'Title' or 'URL' column missing.")
 
     # Write the manifest to the temporary directory
-    tree = ET.ElementTree(manifest)
     manifest_path = os.path.join(temp_dir, "imsmanifest.xml")
+    tree = ET.ElementTree(manifest)
     tree.write(manifest_path, encoding="utf-8", xml_declaration=True)
 
-    # Create the zip file for IMSCC
+    # Create the zip file for IMSCC and add manifest only once
     with zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED) as imscc_zip:
-        # Add imsmanifest.xml to the zip
         imscc_zip.write(manifest_path, arcname="imsmanifest.xml")
-        
-        # Add weblinks folder and contents to the zip
         for root, _, files in os.walk(temp_dir):
             for file in files:
                 file_path = os.path.join(root, file)
                 arcname = os.path.relpath(file_path, start=temp_dir)
-                imscc_zip.write(file_path, arcname=arcname)
+                if arcname != "imsmanifest.xml":
+                    imscc_zip.write(file_path, arcname=arcname)
     
     print(f"IMSCC package created at {output_filename}")
 
