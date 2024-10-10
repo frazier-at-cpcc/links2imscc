@@ -9,6 +9,31 @@ def sanitize_filename(filename):
     return re.sub(r'[\\/*?:"<>|]', "_", filename)
 
 def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
+    # Adding a new module 'Additional Resources' specifically for links
+    def add_additional_resources_module(manifest):
+        # Create 'Additional Resources' module
+        resources_module = ET.SubElement(manifest, "resources")
+        additional_module = ET.SubElement(resources_module, "resource", {
+            "identifier": "res_additional_resources",
+            "type": "webcontent",
+            "href": "additional_resources/index.html"
+        })
+        
+        # Set up 'Additional Resources' module structure
+        add_module_title(additional_module, "Additional Resources")
+        
+        # Adding all link resources to this module
+        links_element = ET.SubElement(additional_module, "links")
+        link_items = [("Link 1", "http://example.com"), ("Link 2", "http://example.org")]  # Add your links here
+
+        for link_title, link_url in link_items:
+            link_item = ET.SubElement(links_element, "item", {
+                "title": link_title,
+                "url": link_url
+            })
+    
+    # Original code follows here...
+    
     # Temporary directory for creating IMSCC structure
     temp_dir = "temp_imscc"
     os.makedirs(temp_dir, exist_ok=True)
