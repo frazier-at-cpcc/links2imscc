@@ -4,6 +4,7 @@ import os
 import xml.etree.ElementTree as ET
 import csv
 import re
+import uuid
 
 def sanitize_filename(filename):
     # Remove or replace any characters that are not allowed in filenames
@@ -49,16 +50,36 @@ def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
                 link_title = row['Title']
                 link_url = row['URL']
                 
+                # Create unique UUID for weblink
+                link_uuid = str(uuid.uuid4())
+                link_folder = f"weblinks/{link_uuid}"
+                os.makedirs(os.path.join(temp_dir, link_folder), exist_ok=True)
+                
                 # Define the resource for the link
-                link_resource_id = f'link_resource_{idx}'
+                link_resource_id = f"link_resource_{link_uuid}"
                 link_resource = ET.SubElement(resources, 'resource', {
                     'identifier': link_resource_id,
-                    'type': 'imswl_xmlv1p3',
-                    'href': link_url
+                    'type': 'imswl_xmlv1p3'
                 })
                 
-                # Each resource needs a file element per Common Cartridge v1.3
-                file_element = ET.SubElement(link_resource, 'file', {'href': link_url})
+                # Write weblink XML file
+                weblink_xml = ET.Element("webLink", {
+                    "xmlns": "http://www.imsglobal.org/xsd/imsccv1p3/imswl_v1p3",
+                    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+                    "xsi:schemaLocation": "http://www.imsglobal.org/xsd/imsccv1p3/imswl_v1p3 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imswl_v1p3.xsd"
+                })
+                title = ET.SubElement(weblink_xml, "title")
+                title.text = link_title
+                url = ET.SubElement(weblink_xml, "url", {"href": link_url, "target": "_blank"})
+                
+                weblink_path = os.path.join(temp_dir, link_folder, f"weblink_{link_uuid}.xml")
+                weblink_tree = ET.ElementTree(weblink_xml)
+                weblink_tree.write(weblink_path, encoding="utf-8", xml_declaration=True)
+                
+                # Reference weblink file in manifest resource
+                file_element = ET.SubElement(link_resource, 'file', {
+                    'href': f"{link_folder}/weblink_{link_uuid}.xml"
+                })
                 
                 # Define the item for the link in the organization structure
                 link_item = ET.SubElement(item_module, 'item', {
@@ -77,7 +98,15 @@ def create_imscc_from_csv(csv_filename, output_filename="content.imscc"):
 
     # Create the zip file for IMSCC
     with zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED) as imscc_zip:
+        # Add imsmanifest.xml to the zip
         imscc_zip.write(manifest_path, arcname="imsmanifest.xml")
+        
+        # Add weblinks folder and contents to the zip
+        for root, _, files in os.walk(temp_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                arcname = os.path.relpath(file_path, start=temp_dir)
+                imscc_zip.write(file_path, arcname=arcname)
     
     print(f"IMSCC package created at {output_filename}")
 
